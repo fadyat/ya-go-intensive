@@ -9,22 +9,16 @@ type node struct {
 }
 
 func leafWithTargetSumma(node *node, currentSum, targetSum int) bool {
+	if node == nil {
+		return false
+	}
+
 	currentSum += node.Val
 	if node.Left == nil && node.Right == nil {
 		return currentSum == targetSum
 	}
 
-	var leftHave bool
-	if node.Left != nil {
-		leftHave = leafWithTargetSumma(node.Left, currentSum, targetSum)
-	}
-
-	var rightHave bool
-	if node.Right != nil {
-		rightHave = leafWithTargetSumma(node.Right, currentSum, targetSum)
-	}
-
-	return leftHave || rightHave
+	return leafWithTargetSumma(node.Left, currentSum, targetSum) || leafWithTargetSumma(node.Right, currentSum, targetSum)
 }
 
 func main() {
@@ -48,10 +42,6 @@ func main() {
 				},
 			},
 		},
-	}
-
-	if root == nil {
-		fmt.Println(false)
 	}
 
 	fmt.Println(leafWithTargetSumma(root, 0, 12))
