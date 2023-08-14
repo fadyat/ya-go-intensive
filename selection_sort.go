@@ -5,11 +5,11 @@ import (
 	"math/rand"
 )
 
-func bubbleSort(arr []int) {
+func selectionSort(arr []int) {
 	for i := 0; i < len(arr); i++ {
-		for j := 0; j < len(arr)-i-1; j++ {
-			if arr[j] > arr[j+1] {
-				arr[j+1], arr[j] = arr[j], arr[j+1]
+		for j := i + 1; j < len(arr); j++ {
+			if arr[i] > arr[j] {
+				arr[i], arr[j] = arr[j], arr[i]
 			}
 		}
 	}
@@ -22,6 +22,6 @@ func main() {
 	}
 
 	fmt.Println(arr)
-	bubbleSort(arr)
+	selectionSort(arr)
 	fmt.Println(arr)
 }
