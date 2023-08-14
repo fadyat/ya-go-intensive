@@ -2,12 +2,6 @@ package main
 
 import "fmt"
 
-type node struct {
-	Val   int
-	Left  *node
-	Right *node
-}
-
 func leafWithTargetSumma(node *node, currentSum, targetSum int) bool {
 	if node == nil {
 		return false
